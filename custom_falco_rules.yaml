@@ -18,3 +18,14 @@
   output: My custom unauthorized process (%proc.cmdline) running
   priority: WARNING
   tags: [my_rules, process]
+
+# This rule is a custom rule that detects when a process is running with a specific command line argument.
+# It is a simple rule that checks if the command line argument contains "my_custom_arg" and if the process name is "my_process_name".
+# If both conditions are met, it generates an alert with a custom message.
+# The rule is tagged with "my_custom_rule" and has a priority of "WARNING".
+- rule: Custom Process Argument Detection
+  desc: This rule detects when a process is running with a specific command line argument.
+  condition: proc.name="my_process_name" and proc.cmdline contains "my_custom_arg"
+  output: Custom process detected with argument (%proc.cmdline) running
+  priority: WARNING
+  tags: [my_custom_rule, process]
